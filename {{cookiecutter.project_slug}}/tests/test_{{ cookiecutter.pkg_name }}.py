@@ -1,7 +1,12 @@
-import os
+async def test_probes(client) -> None:
+    response = await client.get("/healthz")
+    assert response.status_code == 200
 
-from {{ cookiecutter.pkg_name }} import A
+    response = await client.get("/ready")
+    assert response.status_code == 200
 
 
-def test_stack_created():
-    assert A()
+# async def test_get_users(client) -> None:
+#     response = await client.get("/users")
+#     assert response.status_code == 200
+#     assert response.json() == []

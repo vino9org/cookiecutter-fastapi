@@ -2,7 +2,7 @@
   "project_name": "API Project",
   "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
   "pkg_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
-  "project_short_description": "API project built with FastAPI"
+  "project_short_description": "API project built with FastAPI",
   "use_github_action": ["n", "y"],
   "use_postgresql": ["n", "y"],
   "version": "0.1.0",
