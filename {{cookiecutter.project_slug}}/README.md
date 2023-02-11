@@ -1,7 +1,12 @@
 
-# Welcome to your Python project!
+# Welcome to your Python API project!
 
-This project is set up Python project with dev tooling pre-configured
+This project is intended for use for builing REST API using the following libraries:
+* [FastAPI](https://fastapi.tiangolo.com/) light weight API framework
+* [SQLalchemy](https://www.sqlalchemy.org/) Sqlite and PostgreSQL async support are included
+* [Alembic](https://alembic.sqlalchemy.org/en/latest/) database migration
+
+The following dev tooling are pre-configured:
 
 * black
 * flake8
@@ -10,18 +15,33 @@ This project is set up Python project with dev tooling pre-configured
 * VS Code support
 
 ## Setup
-```
-# create virtualenv
-$ poetry shell
+
+```shell
 
 # install dependencies
-(.venv)$ poetry install
+poetry install
+poetry export --without-hashes --format=requirements.txt > requirements.txt
+poetry export --dev --without-hashes --format=requirements.txt > requirements-dev.txt
+poetry run pre-commit install
+poetry shell
+
+# setup config and database
+cp env.txt .env
+alembic upgrade head
+pytest -s -v
+
+# linting, optional
+black .
+isort **/*.py
+flake8
+mypy .
 
 ```
 
-## Develop the code for the stack
-```
+## Get to work
+
+```shell
 # run unit tests
-pytest
+pytest -s -v
 
 ```
