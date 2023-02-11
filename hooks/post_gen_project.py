@@ -29,13 +29,20 @@ print(
 
 cd ~/{relpath}
 poetry install
-poetry shell
 poetry export --without-hashes --format=requirements.txt > requirements.txt
 poetry export --dev --without-hashes --format=requirements.txt > requirements-dev.txt
-
-pre-commit install
+poetry run pre-commit install
+poetry shell
 
 copy env.txt .env
+alembic upgrade head
+pytest -s -v
+
+# linting, optional
+black .
+isort **/*.py
+flake8
+mypy .
 
 # Hack away!!
 
