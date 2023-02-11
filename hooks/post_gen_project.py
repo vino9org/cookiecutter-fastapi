@@ -34,7 +34,7 @@ poetry export --dev --without-hashes --format=requirements.txt > requirements-de
 poetry run pre-commit install
 poetry shell
 
-copy env.txt .env
+mv env.txt .env
 alembic upgrade head
 pytest -s -v
 
