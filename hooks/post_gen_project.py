@@ -30,15 +30,14 @@ print(
 cd ~/{relpath}
 poetry install
 poetry shell
+poetry export --without-hashes --format=requirements.txt > requirements.txt
+poetry export --dev --without-hashes --format=requirements.txt > requirements-dev.txt
 
 pre-commit install
-isort **/*.py
-black .
 
-# creat a dotenv file and edit content
 copy env.txt .env
 
-#    Hack away!
+# Hack away!!
 
 """
 )
