@@ -29,11 +29,14 @@ print(
 
 cd ~/{relpath}
 poetry install
-poetry run pre-commit install
-poetry run isort **/*.py
-poetry run black .
 poetry shell
 
+pre-commit install
+isort **/*.py
+black .
+
+# creat a dotenv file and edit content
+copy env.txt .env
 
 #    Hack away!
 
